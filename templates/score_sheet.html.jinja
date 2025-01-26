@@ -112,10 +112,12 @@
                 </div>
             </div>
 
+            {% if include_return_homepage_button %}
             <div class="row p-0 mt-3 justify-content-center margin_auto" id="row_go_back_button">
 
                 <a class="col-6 btn btn-primary nav-button" href="{{ homepage_link }}">Return to home page</a>
             </div>
+            {% endif %}
         </div>
     </form>
 </body>
