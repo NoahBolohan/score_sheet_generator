@@ -12,6 +12,7 @@ environment = Environment(
 score_sheet_html_template = environment.get_template("score_sheet.html.jinja")
 styles_css_template = environment.get_template("styles.css.jinja")
 misc_scripts_js_template = environment.get_template("misc_scripts.js.jinja")
+score_sheet_scripts_js_template = environment.get_template("score_sheet_scripts.js.jinja")
 
 # Define output files
 
@@ -31,6 +32,9 @@ js_output_dir.mkdir(exist_ok=True, parents=True)
 
 # misc_scripts.js
 misc_scripts_js_output_fp = js_output_dir / "misc_scripts.js"
+
+# score_sheet_scripts.js
+score_sheet_scripts_js_output_fp = js_output_dir / "score_sheet_scripts.js"
 
 # Define data
 score_sheet_html_data = {
@@ -60,6 +64,11 @@ styles_css_data = {
     "background_image_url" : "https://raw.githubusercontent.com/NoahBolohan/wyrmspan-utilities/refs/heads/main/static/box_art/base_game.png"
 }
 
+score_sheet_scripts_js_data = {
+    "min_players" : 2,
+    "max_players" : 5
+}
+
 # Render the .html file
 with open(score_sheet_html_output_fp, mode="w", encoding="utf-8") as results:
     results.write(score_sheet_html_template.render(score_sheet_html_data))
@@ -74,3 +83,7 @@ with open(styles_css_output_fp, mode="w", encoding="utf-8") as results:
 with open(misc_scripts_js_output_fp, mode="w", encoding="utf-8") as results:
     results.write(misc_scripts_js_template.render())
     print(f"... wrote {misc_scripts_js_output_fp}")
+
+with open(score_sheet_scripts_js_output_fp, mode="w", encoding="utf-8") as results:
+    results.write(score_sheet_scripts_js_template.render(score_sheet_scripts_js_data))
+    print(f"... wrote {score_sheet_scripts_js_output_fp}")
