@@ -1,6 +1,10 @@
 from jinja2 import Environment, FileSystemLoader
 
-environment = Environment(loader=FileSystemLoader("templates/"))
+environment = Environment(
+    loader=FileSystemLoader("templates/"),
+    trim_blocks = True,
+    lstrip_blocks = True
+)
 score_sheet_template = environment.get_template("score_sheet_template.jinja")
 
 output_fp = "score_sheet.html"

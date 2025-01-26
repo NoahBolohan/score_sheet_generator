@@ -34,15 +34,25 @@
                     <div class="modal-body">
     
                         <div class="p-0 container-fluid">
-    
-                            <div class="row p-0 mt-2 justify-content-center margin_auto" id="row_n_players_2_to_3">
-                                <button class="col-2 m-1 btn btn-light nav-button" id="col_button_2_players" type="button">2</button>
-                                <button class="col-2 m-1 btn btn-light nav-button" id="col_button_3_players" type="button">3</button>
+
+                            {% set row_1_min = min_players%}
+                            {% set row_1_max = min_players + ((max_players-min_players)/2)|round(1)|int%}
+                            {% set row_2_min = row_1_max + 1%}
+                            {% set row_2_max = max_players%}
+                            <div class="row p-0 mt-2 justify-content-center margin_auto" id="row_n_players_{{ row_1_min }}_to_{{ row_1_max }}">
+
+                                {% for player_numbers in range(row_1_min, row_1_max + 1) %}
+                                 <button class="col-2 m-1 btn btn-light nav-button" id="col_button_{{player_numbers}}_players" type="button">{{player_numbers}}</button>
+                                {% endfor %}
+
                             </div>
     
-                            <div class="row p-0 mt-2 justify-content-center margin_auto" id="row_n_players_4_to_5">
-                                <button class="col-2 m-1 btn btn-light nav-button" id="col_button_4_players" type="button">4</button>
-                                <button class="col-2 m-1 btn btn-light nav-button" id="col_button_5_players" type="button">5</button>
+                            <div class="row p-0 mt-2 justify-content-center margin_auto" id="row_n_players_{{ row_2_min }}_to_{{ row_2_max }}">
+
+                                {% for player_numbers in range(row_2_min, row_2_max + 1) %}
+                                 <button class="col-2 m-1 btn btn-light nav-button" id="col_button_{{player_numbers}}_players" type="button">{{player_numbers}}</button>
+                                {% endfor %}
+
                             </div>
                         </div>
                     </div>
@@ -73,9 +83,11 @@
                     </thead>
                 
                     <tbody>
+
                         {% for row_header in row_headers %}
                         <tr id={{ row_header }}></tr>
                         {% endfor %}
+
                     </tbody>
                 </table>
 
