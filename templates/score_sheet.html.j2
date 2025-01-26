@@ -85,8 +85,9 @@
                     <tbody>
 
                         {% for row_header in row_headers %}
-                        <tr id="{{ row_header }}"></tr>
+                        <tr id="row_{{ row_header }}"></tr>
                         {% endfor %}
+                        <tr id="row_total"></tr>
 
                     </tbody>
                 </table>

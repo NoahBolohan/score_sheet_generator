@@ -9,10 +9,10 @@ environment = Environment(
 )
 
 # Get templates
-score_sheet_html_template = environment.get_template("score_sheet.html.jinja")
-styles_css_template = environment.get_template("styles.css.jinja")
-misc_scripts_js_template = environment.get_template("misc_scripts.js.jinja")
-score_sheet_scripts_js_template = environment.get_template("score_sheet_scripts.js.jinja")
+score_sheet_html_template = environment.get_template("score_sheet.html.j2")
+styles_css_template = environment.get_template("styles.css.j2")
+misc_scripts_js_template = environment.get_template("misc_scripts.js.j2")
+score_sheet_scripts_js_template = environment.get_template("score_sheet_scripts.js.j2")
 
 # Define output files
 
@@ -42,15 +42,14 @@ score_sheet_html_data = {
     "max_players" : 5,
     "score_sheet_title" : "Score Sheet",
     "row_headers" : [
-        "row_markers_on_dragon_guild",
-        "row_printed_on_dragons",
-        "row_end-game_abilities",
-        "row_eggs",
-        "row_cached_resources",
-        "row_tucked_cards",
-        "row_public_objectives",
-        "row_remaining_resources",
-        "row_total"
+        "markers_on_dragon_guild",
+        "printed_on_dragons",
+        "end-game_abilities",
+        "eggs",
+        "cached_resources",
+        "tucked_cards",
+        "public_objectives",
+        "remaining_resources"
     ],
     "include_return_homepage_button" : True,
     "homepage_link" : "https://noahbolohan.github.io/wyrmspan-utilities/index.html",
@@ -66,7 +65,17 @@ styles_css_data = {
 
 score_sheet_scripts_js_data = {
     "min_players" : 2,
-    "max_players" : 5
+    "max_players" : 5,
+    "row_headers" : [
+        "markers_on_dragon_guild",
+        "printed_on_dragons",
+        "end-game_abilities",
+        "eggs",
+        "cached_resources",
+        "tucked_cards",
+        "public_objectives",
+        "remaining_resources"
+    ],
 }
 
 # Render the .html file
